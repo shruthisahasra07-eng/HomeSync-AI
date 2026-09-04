@@ -1,0 +1,17 @@
+{
+  "name": "homesync",
+  "version": "1.0.0",
+  "private": true,
+  "description": "HomeSync - Smart Community & Maintenance Platform",
+  "scripts": {
+    "dev": "node dev.js",
+    "dev:frontend": "npm --prefix frontend run dev",
+    "dev:backend": "npm --prefix backend run dev",
+    "db:reset": "node backend/resetDatabase.js",
+    "build": "npm --prefix frontend run build",
+    "start": "node backend/server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
