@@ -9,6 +9,7 @@ export default function VoiceInputButton({ onTranscript, disabled = false }) {
   const [errorMessage, setErrorMessage] = useState('');
 
   const recognitionRef = useRef(null);
+  const lastInterimRef = useRef('');
 
   useEffect(() => {
     // Check browser compatibility for SpeechRecognition API
@@ -28,6 +29,7 @@ export default function VoiceInputButton({ onTranscript, disabled = false }) {
 
   const handleStartRecording = () => {
     setErrorMessage('');
+    lastInterimRef.current = '';
     const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 
     if (!SpeechRecognition) {
@@ -62,6 +64,9 @@ export default function VoiceInputButton({ onTranscript, disabled = false }) {
 
         if (finalizedChunk.trim()) {
           onTranscript(finalizedChunk.trim());
+          lastInterimRef.current = '';
+        } else if (currentInterim) {
+          lastInterimRef.current = currentInterim;
         }
 
         setInterimText(currentInterim);
@@ -69,6 +74,7 @@ export default function VoiceInputButton({ onTranscript, disabled = false }) {
 
       recognition.onerror = (event) => {
         console.warn('Speech recognition event error:', event.error);
+        lastInterimRef.current = '';
         setIsListening(false);
         setIsProcessing(false);
         setInterimText('');
@@ -83,6 +89,11 @@ export default function VoiceInputButton({ onTranscript, disabled = false }) {
       };
 
       recognition.onend = () => {
+        // Flush any trailing interim speech before ending so speech isn't lost
+        if (lastInterimRef.current && lastInterimRef.current.trim()) {
+          onTranscript(lastInterimRef.current.trim());
+          lastInterimRef.current = '';
+        }
         setIsListening(false);
         setIsProcessing(false);
         setInterimText('');
@@ -92,6 +103,7 @@ export default function VoiceInputButton({ onTranscript, disabled = false }) {
       recognition.start();
     } catch (err) {
       console.error('Failed to initialize speech recognition:', err);
+      lastInterimRef.current = '';
       setIsListening(false);
       setIsProcessing(false);
       setErrorMessage("Voice input isn't available. You can type your maintenance problem instead.");
@@ -104,6 +116,10 @@ export default function VoiceInputButton({ onTranscript, disabled = false }) {
       try {
         recognitionRef.current.stop();
       } catch (e) {
+        if (lastInterimRef.current && lastInterimRef.current.trim()) {
+          onTranscript(lastInterimRef.current.trim());
+          lastInterimRef.current = '';
+        }
         setIsListening(false);
         setIsProcessing(false);
       }
