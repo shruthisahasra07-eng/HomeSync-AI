@@ -2,30 +2,17 @@
  * HomeSync AI - Clean Database Reset Utility
  * Clears all sample/fake records and initializes clean production-ready tables.
  */
-const { runQuery, initDatabase, initDefaultBlocks, getAllRows } = require('./database');
+const { pool, initDatabase, initDefaultBlocks, getAllRows } = require('./database');
 
 async function resetDatabase() {
-  console.log('🧹 Starting clean HomeSync database reset...');
+  console.log('🧹 Starting clean HomeSync database reset on PostgreSQL / Supabase...');
 
   await initDatabase();
 
-  // Disable foreign keys temporarily for clean wipe
-  await runQuery(`PRAGMA foreign_keys = OFF;`);
-
-  // Clear all data tables
-  await runQuery(`DELETE FROM ratings;`);
-  await runQuery(`DELETE FROM notifications;`);
-  await runQuery(`DELETE FROM schedules;`);
-  await runQuery(`DELETE FROM assignments;`);
-  await runQuery(`DELETE FROM maintenance_requests;`);
-  await runQuery(`DELETE FROM workers;`);
-  await runQuery(`DELETE FROM users;`);
-  await runQuery(`DELETE FROM blocks;`);
-
-  // Reset sqlite autoincrement sequences
-  await runQuery(`DELETE FROM sqlite_sequence WHERE name IN ('ratings', 'notifications', 'schedules', 'assignments', 'maintenance_requests', 'workers', 'users', 'blocks');`);
-
-  await runQuery(`PRAGMA foreign_keys = ON;`);
+  // Cleanly truncate all tables and reset sequence IDs in PostgreSQL
+  await pool.query(`
+    TRUNCATE TABLE ratings, notifications, schedules, assignments, maintenance_requests, workers, users, blocks RESTART IDENTITY CASCADE;
+  `);
 
   // Initialize community apartment blocks
   await initDefaultBlocks();
