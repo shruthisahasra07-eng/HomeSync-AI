@@ -659,7 +659,7 @@ app.put('/api/requests/:id/status', authenticateToken, async (req, res) => {
       const assignment = await getRow(`SELECT worker_id FROM assignments WHERE request_id = ?`, [requestId]);
       if (assignment) {
         await runQuery(
-          `UPDATE workers SET completed_jobs = completed_jobs + 1, active_jobs = MAX(0, active_jobs - 1), availability_status = 'Available' WHERE id = ?`,
+          `UPDATE workers SET completed_jobs = completed_jobs + 1, active_jobs = CASE WHEN active_jobs > 0 THEN active_jobs - 1 ELSE 0 END, availability_status = 'Available' WHERE id = ?`,
           [assignment.worker_id]
         );
       }

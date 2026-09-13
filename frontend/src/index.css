@@ -4,31 +4,88 @@
 
 @layer base {
   body {
-    @apply bg-slate-900 text-slate-100 font-sans antialiased min-h-screen selection:bg-blue-600 selection:text-white;
+    background-color: #F7F9F8;
+    color: #17212B;
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    min-height: 100vh;
   }
 }
 
-.glass-panel {
-  background: rgba(15, 23, 42, 0.75);
-  backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+/* Polished SaaS Cards & Panels */
+.glass-panel,
+.card-panel {
+  background-color: #FFFFFF;
+  border: 1px solid #E4E9ED;
+  box-shadow: 0 1px 3px 0 rgba(18, 48, 74, 0.04);
+  border-radius: 1rem;
 }
 
-.glass-card {
-  background: rgba(30, 41, 59, 0.6);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.06);
+.glass-card,
+.card-subtle {
+  background-color: #FFFFFF;
+  border: 1px solid #E4E9ED;
+  box-shadow: 0 1px 2px 0 rgba(18, 48, 74, 0.03);
+  border-radius: 0.875rem;
 }
 
-.pulse-glow {
-  box-shadow: 0 0 20px rgba(59, 130, 246, 0.35);
+/* Subtle Hover Animation */
+.card-hover {
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.card-hover:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 14px -2px rgba(18, 48, 74, 0.08);
+  border-color: #D3DDE5;
 }
 
-@keyframes pulse-subtle {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.85; transform: scale(1.02); }
+/* Button Utilities */
+.btn-primary {
+  background-color: #18A999;
+  color: #FFFFFF;
+  font-weight: 600;
+  border-radius: 0.75rem;
+  padding: 0.625rem 1.25rem;
+  transition: all 0.15s ease-in-out;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 1px 2px 0 rgba(24, 169, 153, 0.2);
+}
+.btn-primary:hover {
+  background-color: #13887B;
 }
 
-.animate-pulse-subtle {
-  animation: pulse-subtle 2s infinite ease-in-out;
+.btn-secondary {
+  background-color: #FFFFFF;
+  color: #12304A;
+  border: 1px solid #E4E9ED;
+  font-weight: 600;
+  border-radius: 0.75rem;
+  padding: 0.625rem 1.25rem;
+  transition: all 0.15s ease-in-out;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.btn-secondary:hover {
+  background-color: #F8FAFB;
+  border-color: #D3DDE5;
+}
+
+/* Clean Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #F7F9F8;
+}
+::-webkit-scrollbar-thumb {
+  background: #D9E2EC;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #BCCCDC;
 }

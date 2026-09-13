@@ -18,7 +18,7 @@ function ProtectedRoute({ children, allowedRoles }) {
   const { user, loading } = useAuth();
 
   if (loading) {
-    return <div className="min-h-screen bg-slate-950 flex items-center justify-center text-slate-500 text-sm">Loading session...</div>;
+    return <div className="min-h-screen bg-warm-bg flex items-center justify-center text-slate-gray text-sm">Loading session...</div>;
   }
 
   if (!user) {
@@ -38,7 +38,7 @@ export default function App() {
   return (
     <AuthProvider>
       <Router>
-        <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col font-sans antialiased">
+        <div className="min-h-screen bg-warm-bg text-charcoal flex flex-col font-sans antialiased">
           <Navbar />
           <main className="flex-1">
             <Routes>

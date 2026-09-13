@@ -77,25 +77,25 @@ export default function RegisterPage() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-950 flex items-center justify-center p-4 py-12">
+    <div className="min-h-screen bg-[#F7F9F8] flex items-center justify-center p-4 py-12">
       <div className="w-full max-w-lg">
         
         {/* Header */}
         <div className="text-center mb-8">
           <Link to="/" className="inline-flex items-center space-x-2.5 mb-3">
-            <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-blue-600 to-indigo-500 flex items-center justify-center shadow-xl shadow-blue-500/20">
-              <Bot className="w-7 h-7 text-white" />
+            <div className="w-12 h-12 rounded-xl bg-teal-50 border border-teal-100 flex items-center justify-center text-[#18A999] shadow-subtle">
+              <Bot className="w-6 h-6 text-[#18A999]" />
             </div>
-            <span className="font-extrabold text-2xl text-white tracking-tight">HomeSync <span className="text-blue-400">AI</span></span>
+            <span className="font-extrabold text-2xl text-[#12304A] tracking-tight">HOME<span className="text-[#18A999]">SYNC</span> <span className="text-[#18A999]">AI</span></span>
           </Link>
-          <h1 className="text-2xl font-bold text-white">Resident Account Registration</h1>
-          <p className="text-xs text-slate-400 mt-1">Join your community maintenance network</p>
+          <h1 className="text-2xl font-bold text-[#12304A]">Resident Account Registration</h1>
+          <p className="text-xs text-[#667085] mt-1">Join your community maintenance network</p>
         </div>
 
         {/* Card */}
-        <div className="glass-panel p-6 sm:p-8 rounded-3xl border border-slate-800 shadow-2xl">
+        <div className="bg-white p-6 sm:p-8 rounded-2xl border border-[#E4E9ED] shadow-card">
           {error && (
-            <div className="mb-5 p-3.5 rounded-xl bg-red-500/10 border border-red-500/30 text-red-400 text-xs font-semibold flex items-center space-x-2">
+            <div className="mb-5 p-3.5 rounded-xl bg-red-50 border border-red-200 text-[#D64545] text-xs font-semibold flex items-center space-x-2">
               <AlertCircle className="w-4 h-4 shrink-0" />
               <span>{error}</span>
             </div>
@@ -103,9 +103,9 @@ export default function RegisterPage() {
 
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <label className="block text-xs font-semibold text-slate-300 mb-1">Full Name *</label>
+              <label className="block text-xs font-semibold text-[#17212B] mb-1">Full Name *</label>
               <div className="relative">
-                <User className="w-4 h-4 text-slate-500 absolute left-3.5 top-1/2 -translate-y-1/2" />
+                <User className="w-4 h-4 text-[#98A2B3] absolute left-3.5 top-1/2 -translate-y-1/2" />
                 <input
                   type="text"
                   name="name"
@@ -113,16 +113,16 @@ export default function RegisterPage() {
                   placeholder="e.g. John Doe"
                   value={formData.name}
                   onChange={handleChange}
-                  className="w-full bg-slate-900 border border-slate-700 rounded-xl pl-10 pr-3.5 py-2.5 text-sm text-slate-100 placeholder-slate-500 focus:outline-none focus:border-blue-500"
+                  className="w-full bg-white border border-[#E4E9ED] rounded-xl pl-10 pr-3.5 py-2.5 text-sm text-[#17212B] placeholder-[#98A2B3] focus:outline-none focus:border-[#18A999] focus:ring-2 focus:ring-[#18A999]/20"
                 />
               </div>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label className="block text-xs font-semibold text-slate-300 mb-1">Email Address *</label>
+                <label className="block text-xs font-semibold text-[#17212B] mb-1">Email Address *</label>
                 <div className="relative">
-                  <Mail className="w-4 h-4 text-slate-500 absolute left-3.5 top-1/2 -translate-y-1/2" />
+                  <Mail className="w-4 h-4 text-[#98A2B3] absolute left-3.5 top-1/2 -translate-y-1/2" />
                   <input
                     type="email"
                     name="email"
@@ -130,22 +130,22 @@ export default function RegisterPage() {
                     placeholder="john@example.com"
                     value={formData.email}
                     onChange={handleChange}
-                    className="w-full bg-slate-900 border border-slate-700 rounded-xl pl-10 pr-3.5 py-2.5 text-sm text-slate-100 placeholder-slate-500 focus:outline-none focus:border-blue-500"
+                    className="w-full bg-white border border-[#E4E9ED] rounded-xl pl-10 pr-3.5 py-2.5 text-sm text-[#17212B] placeholder-[#98A2B3] focus:outline-none focus:border-[#18A999] focus:ring-2 focus:ring-[#18A999]/20"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-slate-300 mb-1">Phone Number</label>
+                <label className="block text-xs font-semibold text-[#17212B] mb-1">Phone Number</label>
                 <div className="relative">
-                  <Phone className="w-4 h-4 text-slate-500 absolute left-3.5 top-1/2 -translate-y-1/2" />
+                  <Phone className="w-4 h-4 text-[#98A2B3] absolute left-3.5 top-1/2 -translate-y-1/2" />
                   <input
                     type="tel"
                     name="phone"
                     placeholder="+91 98765 43210"
                     value={formData.phone}
                     onChange={handleChange}
-                    className="w-full bg-slate-900 border border-slate-700 rounded-xl pl-10 pr-3.5 py-2.5 text-sm text-slate-100 placeholder-slate-500 focus:outline-none focus:border-blue-500"
+                    className="w-full bg-white border border-[#E4E9ED] rounded-xl pl-10 pr-3.5 py-2.5 text-sm text-[#17212B] placeholder-[#98A2B3] focus:outline-none focus:border-[#18A999] focus:ring-2 focus:ring-[#18A999]/20"
                   />
                 </div>
               </div>
@@ -153,15 +153,15 @@ export default function RegisterPage() {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label className="block text-xs font-semibold text-slate-300 mb-1">Apartment Block *</label>
+                <label className="block text-xs font-semibold text-[#17212B] mb-1">Apartment Block *</label>
                 <div className="relative">
-                  <Building className="w-4 h-4 text-slate-500 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
+                  <Building className="w-4 h-4 text-[#98A2B3] absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
                   <select
                     name="block"
                     required
                     value={formData.block}
                     onChange={handleChange}
-                    className="w-full bg-slate-900 border border-slate-700 rounded-xl pl-10 pr-3.5 py-2.5 text-sm text-slate-100 focus:outline-none focus:border-blue-500"
+                    className="w-full bg-white border border-[#E4E9ED] rounded-xl pl-10 pr-3.5 py-2.5 text-sm text-[#17212B] focus:outline-none focus:border-[#18A999] focus:ring-2 focus:ring-[#18A999]/20"
                   >
                     {blocks.length === 0 ? (
                       <option value="Block A">Block A</option>
@@ -175,9 +175,9 @@ export default function RegisterPage() {
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-slate-300 mb-1">Flat Number *</label>
+                <label className="block text-xs font-semibold text-[#17212B] mb-1">Flat Number *</label>
                 <div className="relative">
-                  <MapPin className="w-4 h-4 text-slate-500 absolute left-3.5 top-1/2 -translate-y-1/2" />
+                  <MapPin className="w-4 h-4 text-[#98A2B3] absolute left-3.5 top-1/2 -translate-y-1/2" />
                   <input
                     type="text"
                     name="flat_number"
@@ -185,7 +185,7 @@ export default function RegisterPage() {
                     placeholder="e.g. A-302"
                     value={formData.flat_number}
                     onChange={handleChange}
-                    className="w-full bg-slate-900 border border-slate-700 rounded-xl pl-10 pr-3.5 py-2.5 text-sm text-slate-100 placeholder-slate-500 focus:outline-none focus:border-blue-500"
+                    className="w-full bg-white border border-[#E4E9ED] rounded-xl pl-10 pr-3.5 py-2.5 text-sm text-[#17212B] placeholder-[#98A2B3] focus:outline-none focus:border-[#18A999] focus:ring-2 focus:ring-[#18A999]/20"
                   />
                 </div>
               </div>
@@ -193,9 +193,9 @@ export default function RegisterPage() {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label className="block text-xs font-semibold text-slate-300 mb-1">Password *</label>
+                <label className="block text-xs font-semibold text-[#17212B] mb-1">Password *</label>
                 <div className="relative">
-                  <Lock className="w-4 h-4 text-slate-500 absolute left-3.5 top-1/2 -translate-y-1/2" />
+                  <Lock className="w-4 h-4 text-[#98A2B3] absolute left-3.5 top-1/2 -translate-y-1/2" />
                   <input
                     type="password"
                     name="password"
@@ -203,15 +203,15 @@ export default function RegisterPage() {
                     placeholder="••••••••"
                     value={formData.password}
                     onChange={handleChange}
-                    className="w-full bg-slate-900 border border-slate-700 rounded-xl pl-10 pr-3.5 py-2.5 text-sm text-slate-100 placeholder-slate-500 focus:outline-none focus:border-blue-500"
+                    className="w-full bg-white border border-[#E4E9ED] rounded-xl pl-10 pr-3.5 py-2.5 text-sm text-[#17212B] placeholder-[#98A2B3] focus:outline-none focus:border-[#18A999] focus:ring-2 focus:ring-[#18A999]/20"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-slate-300 mb-1">Confirm Password *</label>
+                <label className="block text-xs font-semibold text-[#17212B] mb-1">Confirm Password *</label>
                 <div className="relative">
-                  <Lock className="w-4 h-4 text-slate-500 absolute left-3.5 top-1/2 -translate-y-1/2" />
+                  <Lock className="w-4 h-4 text-[#98A2B3] absolute left-3.5 top-1/2 -translate-y-1/2" />
                   <input
                     type="password"
                     name="confirmPassword"
@@ -219,7 +219,7 @@ export default function RegisterPage() {
                     placeholder="••••••••"
                     value={formData.confirmPassword}
                     onChange={handleChange}
-                    className="w-full bg-slate-900 border border-slate-700 rounded-xl pl-10 pr-3.5 py-2.5 text-sm text-slate-100 placeholder-slate-500 focus:outline-none focus:border-blue-500"
+                    className="w-full bg-white border border-[#E4E9ED] rounded-xl pl-10 pr-3.5 py-2.5 text-sm text-[#17212B] placeholder-[#98A2B3] focus:outline-none focus:border-[#18A999] focus:ring-2 focus:ring-[#18A999]/20"
                   />
                 </div>
               </div>
@@ -228,16 +228,16 @@ export default function RegisterPage() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full mt-2 py-3.5 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-bold rounded-xl text-sm transition-all shadow-lg shadow-blue-600/30 flex items-center justify-center space-x-2"
+              className="w-full mt-2 py-3 bg-[#18A999] hover:bg-[#13887B] text-white font-semibold rounded-xl text-sm transition-all shadow-sm flex items-center justify-center space-x-2"
             >
               <span>{loading ? 'Creating Account...' : 'Complete Registration'}</span>
               <ArrowRight className="w-4 h-4" />
             </button>
           </form>
 
-          <div className="mt-6 text-center text-xs text-slate-400">
+          <div className="mt-6 text-center text-xs text-[#667085]">
             Already have an account?{' '}
-            <Link to="/login" className="text-blue-400 font-semibold hover:text-blue-300">
+            <Link to="/login" className="text-[#18A999] font-semibold hover:text-[#13887B]">
               Sign In
             </Link>
           </div>

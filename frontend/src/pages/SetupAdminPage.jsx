@@ -67,18 +67,18 @@ export default function SetupAdminPage() {
 
   if (hasAdmin === true) {
     return (
-      <div className="min-h-screen bg-slate-950 flex items-center justify-center p-4">
-        <div className="max-w-md w-full glass-panel p-8 rounded-3xl border border-slate-800 text-center space-y-4">
-          <div className="w-14 h-14 rounded-2xl bg-indigo-500/10 text-indigo-400 flex items-center justify-center mx-auto border border-indigo-500/20">
+      <div className="min-h-screen bg-[#F7F9F8] flex items-center justify-center p-4">
+        <div className="max-w-md w-full bg-white p-8 rounded-2xl border border-[#E4E9ED] text-center space-y-4 shadow-card">
+          <div className="w-14 h-14 rounded-2xl bg-teal-50 text-[#18A999] flex items-center justify-center mx-auto border border-teal-100">
             <Shield className="w-7 h-7" />
           </div>
-          <h2 className="text-xl font-bold text-white">Administrator Configured</h2>
-          <p className="text-xs text-slate-400 leading-relaxed">
+          <h2 className="text-xl font-bold text-[#12304A]">Administrator Configured</h2>
+          <p className="text-xs text-[#667085] leading-relaxed">
             An administrator account is already configured for this HomeSync instance. Please log in using your administrator credentials.
           </p>
           <Link
             to="/login"
-            className="inline-flex items-center justify-center px-6 py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-xs rounded-xl transition-colors"
+            className="inline-flex items-center justify-center px-6 py-2.5 bg-[#18A999] hover:bg-[#13887B] text-white font-semibold text-xs rounded-xl transition-colors shadow-sm"
           >
             Go to Login
           </Link>
@@ -88,22 +88,22 @@ export default function SetupAdminPage() {
   }
 
   return (
-    <div className="min-h-screen bg-slate-950 flex items-center justify-center p-4 py-12">
+    <div className="min-h-screen bg-[#F7F9F8] flex items-center justify-center p-4 py-12">
       <div className="w-full max-w-md">
         
         {/* Header */}
         <div className="text-center mb-8">
-          <div className="w-14 h-14 rounded-2xl bg-gradient-to-tr from-indigo-600 to-purple-500 flex items-center justify-center mx-auto mb-4 shadow-xl shadow-indigo-500/20">
-            <Shield className="w-8 h-8 text-white" />
+          <div className="w-14 h-14 rounded-2xl bg-teal-50 border border-teal-100 flex items-center justify-center mx-auto mb-4 text-[#18A999] shadow-subtle">
+            <Shield className="w-8 h-8 text-[#18A999]" />
           </div>
-          <h1 className="text-2xl font-extrabold text-white">Initial Administrator Setup</h1>
-          <p className="text-xs text-slate-400 mt-1">Initialize the primary administrator account for this community</p>
+          <h1 className="text-2xl font-extrabold text-[#12304A]">Initial Administrator Setup</h1>
+          <p className="text-xs text-[#667085] mt-1">Initialize the primary administrator account for this community</p>
         </div>
 
         {/* Card */}
-        <div className="glass-panel p-6 sm:p-8 rounded-3xl border border-slate-800 shadow-2xl">
+        <div className="bg-white p-6 sm:p-8 rounded-2xl border border-[#E4E9ED] shadow-card">
           {error && (
-            <div className="mb-5 p-3.5 rounded-xl bg-red-500/10 border border-red-500/30 text-red-400 text-xs font-semibold flex items-center space-x-2">
+            <div className="mb-5 p-3.5 rounded-xl bg-red-50 border border-red-200 text-[#D64545] text-xs font-semibold flex items-center space-x-2">
               <AlertCircle className="w-4 h-4 shrink-0" />
               <span>{error}</span>
             </div>
@@ -111,9 +111,9 @@ export default function SetupAdminPage() {
 
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <label className="block text-xs font-semibold text-slate-300 mb-1">Administrator Name *</label>
+              <label className="block text-xs font-semibold text-[#17212B] mb-1">Administrator Name *</label>
               <div className="relative">
-                <User className="w-4 h-4 text-slate-500 absolute left-3.5 top-1/2 -translate-y-1/2" />
+                <User className="w-4 h-4 text-[#98A2B3] absolute left-3.5 top-1/2 -translate-y-1/2" />
                 <input
                   type="text"
                   name="name"
@@ -121,15 +121,15 @@ export default function SetupAdminPage() {
                   placeholder="e.g. Vikram Rao (Facility Manager)"
                   value={formData.name}
                   onChange={handleChange}
-                  className="w-full bg-slate-900 border border-slate-700 rounded-xl pl-10 pr-3.5 py-2.5 text-sm text-slate-100 placeholder-slate-500 focus:outline-none focus:border-indigo-500"
+                  className="w-full bg-white border border-[#E4E9ED] rounded-xl pl-10 pr-3.5 py-2.5 text-sm text-[#17212B] placeholder-[#98A2B3] focus:outline-none focus:border-[#18A999] focus:ring-2 focus:ring-[#18A999]/20"
                 />
               </div>
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-slate-300 mb-1">Administrator Email *</label>
+              <label className="block text-xs font-semibold text-[#17212B] mb-1">Administrator Email *</label>
               <div className="relative">
-                <Mail className="w-4 h-4 text-slate-500 absolute left-3.5 top-1/2 -translate-y-1/2" />
+                <Mail className="w-4 h-4 text-[#98A2B3] absolute left-3.5 top-1/2 -translate-y-1/2" />
                 <input
                   type="email"
                   name="email"
@@ -137,30 +137,30 @@ export default function SetupAdminPage() {
                   placeholder="admin@homesync.ai"
                   value={formData.email}
                   onChange={handleChange}
-                  className="w-full bg-slate-900 border border-slate-700 rounded-xl pl-10 pr-3.5 py-2.5 text-sm text-slate-100 placeholder-slate-500 focus:outline-none focus:border-indigo-500"
+                  className="w-full bg-white border border-[#E4E9ED] rounded-xl pl-10 pr-3.5 py-2.5 text-sm text-[#17212B] placeholder-[#98A2B3] focus:outline-none focus:border-[#18A999] focus:ring-2 focus:ring-[#18A999]/20"
                 />
               </div>
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-slate-300 mb-1">Contact Phone</label>
+              <label className="block text-xs font-semibold text-[#17212B] mb-1">Contact Phone</label>
               <div className="relative">
-                <Phone className="w-4 h-4 text-slate-500 absolute left-3.5 top-1/2 -translate-y-1/2" />
+                <Phone className="w-4 h-4 text-[#98A2B3] absolute left-3.5 top-1/2 -translate-y-1/2" />
                 <input
                   type="tel"
                   name="phone"
                   placeholder="+91 98765 00000"
                   value={formData.phone}
                   onChange={handleChange}
-                  className="w-full bg-slate-900 border border-slate-700 rounded-xl pl-10 pr-3.5 py-2.5 text-sm text-slate-100 placeholder-slate-500 focus:outline-none focus:border-indigo-500"
+                  className="w-full bg-white border border-[#E4E9ED] rounded-xl pl-10 pr-3.5 py-2.5 text-sm text-[#17212B] placeholder-[#98A2B3] focus:outline-none focus:border-[#18A999] focus:ring-2 focus:ring-[#18A999]/20"
                 />
               </div>
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-slate-300 mb-1">Administrator Password *</label>
+              <label className="block text-xs font-semibold text-[#17212B] mb-1">Administrator Password *</label>
               <div className="relative">
-                <Lock className="w-4 h-4 text-slate-500 absolute left-3.5 top-1/2 -translate-y-1/2" />
+                <Lock className="w-4 h-4 text-[#98A2B3] absolute left-3.5 top-1/2 -translate-y-1/2" />
                 <input
                   type="password"
                   name="password"
@@ -168,15 +168,15 @@ export default function SetupAdminPage() {
                   placeholder="••••••••"
                   value={formData.password}
                   onChange={handleChange}
-                  className="w-full bg-slate-900 border border-slate-700 rounded-xl pl-10 pr-3.5 py-2.5 text-sm text-slate-100 placeholder-slate-500 focus:outline-none focus:border-indigo-500"
+                  className="w-full bg-white border border-[#E4E9ED] rounded-xl pl-10 pr-3.5 py-2.5 text-sm text-[#17212B] placeholder-[#98A2B3] focus:outline-none focus:border-[#18A999] focus:ring-2 focus:ring-[#18A999]/20"
                 />
               </div>
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-slate-300 mb-1">Confirm Password *</label>
+              <label className="block text-xs font-semibold text-[#17212B] mb-1">Confirm Password *</label>
               <div className="relative">
-                <Lock className="w-4 h-4 text-slate-500 absolute left-3.5 top-1/2 -translate-y-1/2" />
+                <Lock className="w-4 h-4 text-[#98A2B3] absolute left-3.5 top-1/2 -translate-y-1/2" />
                 <input
                   type="password"
                   name="confirmPassword"
@@ -184,7 +184,7 @@ export default function SetupAdminPage() {
                   placeholder="••••••••"
                   value={formData.confirmPassword}
                   onChange={handleChange}
-                  className="w-full bg-slate-900 border border-slate-700 rounded-xl pl-10 pr-3.5 py-2.5 text-sm text-slate-100 placeholder-slate-500 focus:outline-none focus:border-indigo-500"
+                  className="w-full bg-white border border-[#E4E9ED] rounded-xl pl-10 pr-3.5 py-2.5 text-sm text-[#17212B] placeholder-[#98A2B3] focus:outline-none focus:border-[#18A999] focus:ring-2 focus:ring-[#18A999]/20"
                 />
               </div>
             </div>
@@ -192,16 +192,16 @@ export default function SetupAdminPage() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full mt-2 py-3.5 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white font-bold rounded-xl text-sm transition-all shadow-lg shadow-indigo-600/30 flex items-center justify-center space-x-2"
+              className="w-full mt-2 py-3 bg-[#18A999] hover:bg-[#13887B] text-white font-semibold rounded-xl text-sm transition-all shadow-sm flex items-center justify-center space-x-2"
             >
               <span>{loading ? 'Initializing Administrator...' : 'Initialize Administrator'}</span>
               <ArrowRight className="w-4 h-4" />
             </button>
           </form>
 
-          <div className="mt-6 text-center text-xs text-slate-400">
+          <div className="mt-6 text-center text-xs text-[#667085]">
             Already have an administrator account?{' '}
-            <Link to="/login" className="text-indigo-400 font-semibold hover:text-indigo-300">
+            <Link to="/login" className="text-[#18A999] font-semibold hover:text-[#13887B]">
               Sign In
             </Link>
           </div>

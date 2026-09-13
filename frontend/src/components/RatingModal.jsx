@@ -25,21 +25,21 @@ export default function RatingModal({ isOpen, onClose, request, onRatingSubmitte
   };
 
   return (
-    <div className="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-      <div className="bg-slate-900 border border-slate-700/60 rounded-2xl max-w-md w-full p-6 shadow-2xl animate-in zoom-in-95">
-        <div className="flex items-center justify-between border-b border-slate-800 pb-4 mb-4">
+    <div className="fixed inset-0 bg-[#12304A]/40 backdrop-blur-xs z-50 flex items-center justify-center p-4">
+      <div className="bg-white border border-[#E4E9ED] rounded-2xl max-w-md w-full p-6 shadow-2xl animate-in zoom-in-95">
+        <div className="flex items-center justify-between border-b border-[#E4E9ED] pb-4 mb-4">
           <div>
-            <h3 className="text-lg font-bold text-white">Rate Service Quality</h3>
-            <p className="text-xs text-slate-400">Request #{request.ticket_code} • {request.category}</p>
+            <h3 className="text-lg font-bold text-[#12304A]">Rate Service Quality</h3>
+            <p className="text-xs text-[#667085]">Request #{request.ticket_code} • {request.category}</p>
           </div>
-          <button onClick={onClose} className="text-slate-400 hover:text-white">
+          <button onClick={onClose} className="text-[#667085] hover:text-[#12304A]">
             <X className="w-5 h-5" />
           </button>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-5">
           <div className="text-center">
-            <p className="text-sm font-medium text-slate-300 mb-3">How satisfied were you with the repair work?</p>
+            <p className="text-sm font-medium text-[#17212B] mb-3">How satisfied were you with the repair work?</p>
             <div className="flex items-center justify-center space-x-2">
               {[1, 2, 3, 4, 5].map((star) => (
                 <button
@@ -53,14 +53,14 @@ export default function RatingModal({ isOpen, onClose, request, onRatingSubmitte
                   <Star 
                     className={`w-8 h-8 ${
                       (hoverRating || rating) >= star 
-                        ? 'text-amber-400 fill-amber-400' 
-                        : 'text-slate-700'
+                        ? 'text-[#E8A317] fill-[#E8A317]' 
+                        : 'text-slate-200'
                     }`} 
                   />
                 </button>
               ))}
             </div>
-            <span className="text-xs text-amber-400 font-semibold mt-2 block">
+            <span className="text-xs text-[#E8A317] font-semibold mt-2 block">
               {rating === 5 && 'Outstanding! 🌟'}
               {rating === 4 && 'Very Good 👍'}
               {rating === 3 && 'Average'}
@@ -70,7 +70,7 @@ export default function RatingModal({ isOpen, onClose, request, onRatingSubmitte
           </div>
 
           <div>
-            <label className="block text-xs font-semibold text-slate-300 mb-1.5">
+            <label className="block text-xs font-semibold text-[#17212B] mb-1.5">
               Additional Feedback (Optional)
             </label>
             <textarea
@@ -78,7 +78,7 @@ export default function RatingModal({ isOpen, onClose, request, onRatingSubmitte
               value={feedback}
               onChange={(e) => setFeedback(e.target.value)}
               placeholder="Tell us what went well or how we can improve..."
-              className="w-full bg-slate-800 border border-slate-700 rounded-xl p-3 text-sm text-slate-100 placeholder-slate-500 focus:outline-none focus:border-blue-500"
+              className="w-full bg-white border border-[#E4E9ED] rounded-xl p-3 text-sm text-[#17212B] placeholder-[#98A2B3] focus:outline-none focus:border-[#18A999] focus:ring-2 focus:ring-[#18A999]/20"
             />
           </div>
 
@@ -86,14 +86,14 @@ export default function RatingModal({ isOpen, onClose, request, onRatingSubmitte
             <button
               type="button"
               onClick={onClose}
-              className="px-4 py-2 text-sm text-slate-400 hover:text-white"
+              className="px-4 py-2 text-sm text-[#667085] hover:text-[#12304A]"
             >
               Skip
             </button>
             <button
               type="submit"
               disabled={submitting}
-              className="px-5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white font-semibold rounded-xl text-sm transition-all shadow-lg shadow-blue-600/30"
+              className="px-5 py-2.5 bg-[#18A999] hover:bg-[#13887B] text-white font-semibold rounded-xl text-sm transition-all shadow-sm"
             >
               {submitting ? 'Submitting...' : 'Submit Rating'}
             </button>

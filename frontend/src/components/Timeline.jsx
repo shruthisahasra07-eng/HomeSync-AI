@@ -28,7 +28,7 @@ export default function Timeline({ currentStatus }) {
 
   if (currentStatus === 'CANCELLED') {
     return (
-      <div className="p-4 rounded-xl bg-red-500/10 border border-red-500/30 text-red-400 text-sm font-medium flex items-center justify-center space-x-2">
+      <div className="p-4 rounded-xl bg-red-50 border border-red-200 text-red-800 text-sm font-medium flex items-center justify-center space-x-2">
         <span>This maintenance request has been cancelled.</span>
       </div>
     );
@@ -38,9 +38,9 @@ export default function Timeline({ currentStatus }) {
     <div className="w-full py-4">
       <div className="relative flex items-center justify-between">
         {/* Connection Line */}
-        <div className="absolute left-0 top-1/2 -translate-y-1/2 w-full h-1 bg-slate-800 rounded-full z-0" />
+        <div className="absolute left-0 top-1/2 -translate-y-1/2 w-full h-1 bg-[#E4E9ED] rounded-full z-0" />
         <div 
-          className="absolute left-0 top-1/2 -translate-y-1/2 h-1 bg-gradient-to-r from-blue-600 to-indigo-500 rounded-full z-0 transition-all duration-500"
+          className="absolute left-0 top-1/2 -translate-y-1/2 h-1 bg-[#18A999] rounded-full z-0 transition-all duration-500"
           style={{ width: `${((Math.max(1, currentStepIndex) - 1) / (steps.length - 1)) * 100}%` }}
         />
 
@@ -55,16 +55,16 @@ export default function Timeline({ currentStatus }) {
               <div 
                 className={`w-9 h-9 rounded-full flex items-center justify-center transition-all duration-300 ${
                   isDone 
-                    ? 'bg-blue-600 text-white shadow-lg shadow-blue-500/30' 
+                    ? 'bg-[#18A999] text-white shadow-sm' 
                     : isCurrent 
-                    ? 'bg-indigo-500 text-white ring-4 ring-indigo-500/20 animate-pulse' 
-                    : 'bg-slate-800 text-slate-400 border border-slate-700'
+                    ? 'bg-[#12304A] text-white ring-4 ring-teal-100 shadow-sm' 
+                    : 'bg-white text-[#667085] border border-[#E4E9ED]'
                 }`}
               >
                 {isDone ? <CheckCircle2 className="w-5 h-5" /> : <Icon className="w-4 h-4" />}
               </div>
-              <span className={`text-[11px] font-medium mt-2 transition-colors ${
-                isCurrent ? 'text-indigo-400 font-semibold' : isDone ? 'text-slate-200' : 'text-slate-500'
+              <span className={`text-[11px] mt-2 transition-colors ${
+                isCurrent ? 'text-[#12304A] font-bold' : isDone ? 'text-[#17212B] font-medium' : 'text-[#667085]'
               }`}>
                 {step.label}
               </span>
