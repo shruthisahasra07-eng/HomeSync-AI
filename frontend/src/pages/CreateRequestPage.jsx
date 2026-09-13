@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Bot, Sparkles, CheckCircle2, ArrowRight, Calendar, Clock, MapPin, AlertCircle, Wrench, RefreshCw, Building } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { requestAPI, blockAPI } from '../services/api';
+import VoiceInputButton from '../components/VoiceInputButton';
 
 export default function CreateRequestPage() {
   const { user } = useAuth();
@@ -103,15 +104,24 @@ export default function CreateRequestPage() {
           )}
 
           {/* Main Input: Problem Description */}
-          <div className="bg-white p-6 rounded-2xl border border-[#E4E9ED] shadow-subtle">
-            <div className="flex items-center justify-between mb-3">
-              <label className="block text-sm font-bold text-[#12304A] flex items-center space-x-2">
+          <div className="bg-white p-6 rounded-2xl border border-[#E4E9ED] shadow-subtle space-y-3">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
+              <div className="flex items-center space-x-2">
                 <Sparkles className="w-4 h-4 text-[#18A999]" />
-                <span>Problem Description *</span>
-              </label>
-              <span className="text-[11px] text-[#18A999] font-semibold bg-teal-50 px-2.5 py-0.5 rounded border border-teal-200">
-                AI Diagnostic Ready
-              </span>
+                <label className="text-sm font-bold text-[#12304A]">
+                  Problem Description *
+                </label>
+                <span className="text-[11px] text-[#18A999] font-semibold bg-teal-50 px-2 py-0.5 rounded border border-teal-200">
+                  AI Ready
+                </span>
+              </div>
+
+              <VoiceInputButton 
+                onTranscript={(transcript) => {
+                  setDescription(prev => prev ? `${prev.trim()} ${transcript}` : transcript);
+                }}
+                disabled={isAnalyzing}
+              />
             </div>
 
             <textarea
