@@ -1,17 +1,23 @@
 /**
- * HomeSync AI - Complaint Analysis Service
- * Understands natural language maintenance complaints and outputs structured JSON metadata.
+ * HomeSync AI - AI-Assisted & Rule-Based NLP Complaint Analysis Service
+ * 
+ * Analyzes natural language maintenance complaints using deterministic rule-based NLP classification,
+ * semantic keyword matching, and severity heuristics to extract structured metadata:
+ * - Category & Subcategory
+ * - Priority Level (Low / Medium / High)
+ * - Required Worker Skill
+ * - Estimated Repair Duration (minutes)
+ * - Explainable Diagnostic Reasoning & Confidence Score
+ * 
+ * Note: Operates as a fast, deterministic, offline-capable, and cost-free NLP classification engine.
  */
 
 async function analyzeMaintenanceRequest(description) {
   if (!description || typeof description !== 'string') {
-    throw new Error('Description is required for AI analysis');
+    throw new Error('Description is required for analysis');
   }
 
   const text = description.toLowerCase().trim();
-
-  // If Gemini API Key is available, we could attempt Gemini API call here.
-  // Below is the robust, production-grade NLP rule-based engine that works 100% offline and accurately handles all prompt test cases.
 
   let category = 'Other';
   let subcategory = 'General Maintenance';
@@ -19,7 +25,7 @@ async function analyzeMaintenanceRequest(description) {
   let requiredSkill = 'General Maintenance';
   let estimatedDuration = 45; // minutes
   let confidence = 92;
-  let reason = 'Based on natural language keyword matching and symptom severity analysis.';
+  let reason = 'Identified via rule-based NLP semantic keyword matching and symptom severity analysis.';
 
   // 1. PLUMBING
   if (

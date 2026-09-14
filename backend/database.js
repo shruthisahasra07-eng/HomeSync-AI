@@ -1,13 +1,22 @@
 const { Pool, types } = require('pg');
 const path = require('path');
-require('dotenv').config({ path: path.join(__dirname, '.env') });
+const dotenv = require('dotenv');
+// Load .env from backend directory first, then root directory
+dotenv.config({ path: path.join(__dirname, '.env') });
+dotenv.config({ path: path.join(__dirname, '..', '.env') });
 
 // Parse BIGINT (type id 20) as numbers
 types.setTypeParser(20, (val) => (val === null ? null : parseInt(val, 10)));
 // Parse NUMERIC / DECIMAL (type id 1700) as floats
 types.setTypeParser(1700, (val) => (val === null ? null : parseFloat(val)));
 
-const connectionString = process.env.DATABASE_URL || 'postgresql://postgres.yxicrdkkztajqyvqoslu:4FBLk7En%25sHp7h_@aws-0-ap-northeast-2.pooler.supabase.com:6543/postgres';
+const connectionString = process.env.DATABASE_URL;
+
+if (!connectionString) {
+  console.error('❌ FATAL: DATABASE_URL environment variable is not set.');
+  console.error('Please configure DATABASE_URL in your .env file.');
+  process.exit(1);
+}
 
 const pool = new Pool({
   connectionString,
